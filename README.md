@@ -1,5 +1,5 @@
-simple-pwa-files-generator
-==========================
+[simple-pwa-files-generator](https://dirkarnez.github.io/simple-pwa-files-generator)
+====================================================================================
 ### TODOs
 - [ ] icon (launcher icon, macOS "mask-icon", apple "apple-touch-icon"...) generation
 - [ ] manifest.json

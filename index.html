@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PNG Resizer with Transparency</title>
+  <style>
+    canvas {
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+  <h1>PNG Resizer with Transparency</h1>
+  <input type="file" id="fileInput" accept="image/png">
+  <br>
+  <label for="scaleFactor">Scale factor:</label>
+  <input type="number" id="scaleFactor" value="1" step="0.1">
+  <button onclick="resizePNG()">Resize</button>
+  <br>
+  <canvas id="canvas"></canvas>
+
+  <script>
+    function resizePNG() {
+      const fileInput = document.getElementById('fileInput');
+      const scaleFactorInput = document.getElementById('scaleFactor');
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d', { alpha: true });
+
+      if (fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        const img = new Image();
+
+        img.onload = function() {
+          canvas.width = img.width * scaleFactorInput.value;
+          canvas.height = img.height * scaleFactorInput.value;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        };
+
+        img.src = URL.createObjectURL(file);
+      }
+    }
+  </script>
+</body>
+</html>
